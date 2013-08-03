@@ -3,6 +3,7 @@
 
 from sympy import And, Or, Symbol
 from sympy.core.relational import Relational
+from sympy.logic.inference import satisfiable
 from pprint import pprint
 
 
@@ -115,11 +116,7 @@ def main():
     xk = Symbol("xk")
     yi = Symbol("yi")
 
-    t3 = TerminalNode("t3", {
-        "d": (bd-xi-xj)+(pd2+pa)*(br+xi)*(pd2/(pd2+pa))-pr2*(bd-xi-xj)-k*(pd2/(pd2+pa)),
-        "r": (br+xi)+pr2*(bd-xi+ba)-(pd2+pa)*(br+xi)-k,
-        "a": (ba+xj)+(pd2+pa)*(br+xi)*(pa/(pd2+pa))-pr2*(ba+xj)-k*(pa/(pd2+pa)),
-    })
+    
 
     t6 = TerminalNode("t6", {
         "d": bd - xi - xj - yi,
@@ -134,9 +131,82 @@ def main():
     })
 
     r1 = FolderNode((t6, t7), lambda x: x.utilities["r"])
+
+    t3 = TerminalNode("t3", {
+        "d": (bd-xi-xj)+(pd2+pa)*(br+xi)*(pd2/(pd2+pa))-pr2*(bd-xi-xj)-k*(pd2/(pd2+pa)),
+        "r": (br+xi)+pr2*(bd-xi+ba)-(pd2+pa)*(br+xi)-k,
+        "a": (ba+xj)+(pd2+pa)*(br+xi)*(pa/(pd2+pa))-pr2*(ba+xj)-k*(pa/(pd2+pa)),
+    })
+
     d1 = FolderNode((r1, t3), lambda x: x.utilities["d"])
-    d1.solve()
-    pprint(d1.solutions)
+
+    t8 = TerminalNode("t8", {
+        "d": bd-xi-yi,
+        "r": br+xi+yi,
+        "a": ba,
+    })
+
+    t9 = TerminalNode("t9", {
+        "d": (bd-xi)+pd2*(br+xi)-pr2*(bd-xi)-k,
+        "r": (br+xi)+pr2*(bd-xi)-pd2*(br+xi)-k,
+        "a": ba,
+    })
+
+    r2 = FolderNode((t8, t9), lambda x: x.utilities["r"])
+
+    t4 = TerminalNode("t4", {
+        "d": (bd - xi)+pd2*(br+xi)-pr2*(bd-xi)-k,
+        "r": (br+xi)+pr2*(bd-xi)-pd2*(br+xi)-k,
+        "a": ba,
+    })
+
+    d2 = FolderNode((r2, t4), lambda x: x.utilities["d"])
+
+    t10 = TerminalNode("t10", {
+        "d": bd - xi-yi,
+        "r": br+xi-xk+yi,
+        "a": ba+xk,
+    })
+
+    t11 = TerminalNode("t11", {
+        "d": (bd-xi)+pd2*(bd+xi+ba)-(pr2+pa)*(bd-xi)-k,
+        "r": (br+xi-xk)+(pr2+pa)*(bd-xi)*(pr2/(pr2+pa))-pd2*(br+xi-xk)-k*(pr2/(pr2+pa)),
+        "a": (ba+xk)+(pr2+pa)*(bd-xi)*(pa/(pr2+pa))-pd2*(ba+xk)-k*(pa/(pr2+pa)),
+    })
+
+    r3 = FolderNode((t10, t11), lambda x: x.utilities["r"])
+
+    t5 = TerminalNode("t5", {
+        "d": (bd-xi)+pd2*(bd+xi+ba)-(pr2+pa)*(bd-xi)-k,
+        "r": (br+xi-xk)+(pr2+pa)*(bd-xi)*(pr2/(pr2+pa))-pd2*(br+xi-xk)-k*(pr2/(pr2+pa)),
+        "a": (ba+xk)+(pr2+pa)*(bd-xi)*(pa/(pr2+pa))-pd2*(ba+xk)-k*(pa/(pr2+pa)),
+    })
+
+    d3 = FolderNode((r3, t5), lambda x: x.utilities["d"])
+
+    a0 = FolderNode((d1,d2,d3), lambda x: x.utilities["a"])
+
+    t2 = TerminalNode("t2", {
+        "d": bd+pd1*br-pr1*bd-k,
+        "r": br+pr1*bd-pd1*br-k,
+        "a": ba,
+    })
+
+    r0 = FolderNode((a0, t2), lambda x: x.utilities["r"])
+
+    t1 = TerminalNode("t1", {
+        "d": bd+pd1*br-pr1*bd-k,
+        "r": br+pr1*bd-pd1*br-k,
+        "a": ba,
+    })
+
+    d0 = FolderNode((r0, t1), lambda x: x.utilities["d"])
+
+    print "Solutions"
+    d0.solve()
+    for leaf in d0.solutions:
+        condition = d0.solutions[leaf]
+        print "\t %s, %s"% (leaf, satisfiable(condition, algorithm="dpll2"), )
 
     '''
     # mini testing with tree solver
