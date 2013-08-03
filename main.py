@@ -84,37 +84,36 @@ def JOr(a, b):
 def singleton(x):
     return ((x,),)
 
-lpvariables = {
+def lpsolve(inequalities):
+    lpvariables = {
         "xi": LpVariable("xi"),
         "xj": LpVariable("xj"),
         "xk": LpVariable("xk"),
         "yi": LpVariable("yi"),
     }
 
-def convert(expr):
-    if isinstance(expr, Number):
-        return float(expr)
-    elif isinstance(expr, Symbol):
-        global lpvariables
-        return lpvariables[expr.name]
-    elif isinstance(expr, Add):
-        answer = 0
-        for arg in expr.args:
-            answer += convert(arg)
-        return answer
-    elif isinstance(expr, Mul):
-        answer = 1.0
-        for arg in expr.args:
-            answer *= convert(arg)
-        return answer
-    elif isinstance(expr, StrictGreaterThan):
-        return convert(expr.lhs) >= convert(expr.rhs)
-    elif isinstance(expr, StrictLessThan):
-        return convert(expr.lhs) <= convert(expr.rhs)
-    else:
-        raise Exception("Can't convert this sympy type to LP type:\n%s - %s" % (expr.__class__, expr ))
+    def convert(expr):
+        if isinstance(expr, Number):
+            return float(expr)
+        elif isinstance(expr, Symbol):
+            return lpvariables[expr.name]
+        elif isinstance(expr, Add):
+            answer = 0
+            for arg in expr.args:
+                answer += convert(arg)
+            return answer
+        elif isinstance(expr, Mul):
+            answer = 1.0
+            for arg in expr.args:
+                answer *= convert(arg)
+            return answer
+        elif isinstance(expr, StrictGreaterThan):
+            return convert(expr.lhs) >= convert(expr.rhs)
+        elif isinstance(expr, StrictLessThan):
+            return convert(expr.lhs) <= convert(expr.rhs)
+        else:
+            raise Exception("Can't convert this sympy type to LP type:\n%s - %s" % (expr.__class__, expr ))
 
-def lpsolve(inequalities):
     prob = LpProblem("The Whiskas Problem",LpMinimize)
     obj = LpVariable("dummy")
     # dummy objective function
@@ -125,6 +124,8 @@ def lpsolve(inequalities):
     prob.writeLP("temp.lp")
     prob.solve()
     return prob
+
+
 
 def main():
 
@@ -143,10 +144,6 @@ def main():
     xj = Symbol("xj")
     xk = Symbol("xk")
     yi = Symbol("yi")
-
-    
-
-    
 
     t6 = TerminalNode("t6", {
         "d": bd - xi - xj - yi,
