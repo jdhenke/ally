@@ -1,10 +1,15 @@
 #!/bin/python
 
 
-from sympy import And, Or, Symbol
+from sympy import And, Or, Symbol, solve
 from sympy.core.relational import Relational
 from sympy.logic.inference import satisfiable
 from pprint import pprint
+from sympy.core.relational import StrictGreaterThan, StrictLessThan
+from pulp import *
+from sympy.core.add import Add
+from sympy.core.mul import Mul
+from sympy.core.numbers import Number
 
 
 class Node(object):
@@ -15,7 +20,7 @@ class TerminalNode(object):
     def __init__(self, name, utilities):
         self.name = name
         self.utilities = utilities
-        self.solutions = {self: True}
+        self.solutions = {self: singleton(True)}
     def solve(self):
         pass
     def __hash__(self):
@@ -37,7 +42,7 @@ class FolderNode(object):
         for child in self.children:
             child.solve()
             for leaf in child.solutions.keys():
-                self.solutions[leaf] = False
+                self.solutions[leaf] = singleton(False)
         # TODO: refactor into generator
         for i in xrange(len(self.children)-1):
             for j in xrange(i + 1, len(self.children)):
@@ -49,42 +54,11 @@ class FolderNode(object):
                 for leafLeft in leavesLeft:
                     for leafRight in leavesRight:
                         # TODO: distribute and add ands of primitives
-
-                        self.solutions[leafLeft] = Or(self.solutions[leafLeft],
-                                                      self.flatten(And(childLeft.solutions[leafLeft],
-                                                          childRight.solutions[leafRight],
-                                                          self.util(leafLeft) > self.util(leafRight))))
-                        self.solutions[leafRight] = Or(self.solutions[leafRight],
-                                                      self.flatten(And(childLeft.solutions[leafLeft],
-                                                        childRight.solutions[leafRight],
-                                                        self.util(leafRight) > self.util(leafLeft))))
-        self.solved = True
-
-    def flatten(self, term):
-        # term is and And of solutoins
-        # solutions should always be a bool, inequality or Or of inequalities
-
-        return term
-
-        # if it was simplified
-        if isinstance(term, Relational) or isinstance(term, bool):
-            return term
-
-        # if contains more than two terms
-        elif isinstance(term, And):
-            groups = []
-            for arg in term.args:
-                # args can be solutions, but not bools
-                if isinstance(arg, Relational):
-                    groups.append((arg,))
-                elif isinstance(arg, Or):
-                    groups.append(arg.args)
-            lhs = 0
-            rhs = 0
-            # TODO: combine groups of inequalities anded together into a flat list of inequalities
-            return lhs > rhs
-        else:
-            raise Exception("Weird class encountered: " + term)
+                        situation = JAnd(childLeft.solutions[leafLeft], childRight.solutions[leafRight])
+                        leafLeftSituation = JAnd(situation, singleton(self.util(leafLeft) > self.util(leafRight)))
+                        leafRightSituation = JAnd(situation, singleton(self.util(leafRight) > self.util(leafLeft)))
+                        self.solutions[leafLeft] = JOr(self.solutions[leafLeft], leafLeftSituation)
+                        self.solutions[leafRight] = JOr(self.solutions[leafRight], leafRightSituation)
 
 class NamedPremise:
     def __init__(self, value, name):
@@ -97,6 +71,60 @@ class NamedPremise:
     def __nonzero__(self):
         return False or self.value
 
+def JAnd(a, b):
+    output = []
+    for x in a:
+        for y in b:
+            output.append(x+y)
+    return tuple(output)
+
+def JOr(a, b):
+    return a+b
+
+def singleton(x):
+    return ((x,),)
+
+lpvariables = {
+        "xi": LpVariable("xi"),
+        "xj": LpVariable("xj"),
+        "xk": LpVariable("xk"),
+        "yi": LpVariable("yi"),
+    }
+
+def convert(expr):
+    if isinstance(expr, Number):
+        return float(expr)
+    elif isinstance(expr, Symbol):
+        global lpvariables
+        return lpvariables[expr.name]
+    elif isinstance(expr, Add):
+        answer = 0
+        for arg in expr.args:
+            answer += convert(arg)
+        return answer
+    elif isinstance(expr, Mul):
+        answer = 1.0
+        for arg in expr.args:
+            answer *= convert(arg)
+        return answer
+    elif isinstance(expr, StrictGreaterThan):
+        return convert(expr.lhs) >= convert(expr.rhs)
+    elif isinstance(expr, StrictLessThan):
+        return convert(expr.lhs) <= convert(expr.rhs)
+    else:
+        raise Exception("Can't convert this sympy type to LP type:\n%s - %s" % (expr.__class__, expr ))
+
+def lpsolve(inequalities):
+    prob = LpProblem("The Whiskas Problem",LpMinimize)
+    obj = LpVariable("dummy")
+    # dummy objective function
+    prob += obj
+    prob += obj == 1.0
+    for ineq in inequalities:
+        prob += convert(ineq)
+    prob.writeLP("temp.lp")
+    prob.solve()
+    return prob
 
 def main():
 
@@ -115,6 +143,8 @@ def main():
     xj = Symbol("xj")
     xk = Symbol("xk")
     yi = Symbol("yi")
+
+    
 
     
 
@@ -203,35 +233,18 @@ def main():
     d0 = FolderNode((r0, t1), lambda x: x.utilities["d"])
 
     print "Solutions"
-    d0.solve()
-    for leaf in d0.solutions:
-        condition = d0.solutions[leaf]
-        print "\t %s, %s"% (leaf, satisfiable(condition, algorithm="dpll2"), )
-
-    '''
-    # mini testing with tree solver
-    nodes = [TerminalNode(letter) for letter in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLNOPQRSTUVWXYZ"[:16]]
-    while len(nodes) > 1:
-        newnodes = []
-        for i in xrange(0, len(nodes), 2):
-            newnodes.append(FolderNode(nodes[i:i+2]))
-        nodes = newnodes
-    root = nodes[0]
+    root = d0
     root.solve()
-    print root.solutions
-
-    # mini testing with named booleans
-    p = NamedPremise(True, "The sky is blue")
-    q = NamedPremise(False, "The birds and the bees")
-
-    assert not And(p,q)
-    assert Or(p,q)
-    assert And(p,p)
-    assert not And(q,q)
-    print p.__toString__(), q.__toString__()
-    '''
-
-
+    for leaf, solutions in root.solutions.iteritems():
+        print leaf
+        for option in solutions:
+            simplified = And(*option)
+            if simplified is not False:
+                solution = lpsolve(simplified.args)
+                if solution.status == 1:
+                    print '\tLeaf %s solved it.' % (leaf, )
+                    for v in solution.variables():
+                        print "\t\t%s=%s" % (v.name, v.varValue, )
 
 if __name__ == '__main__':
     main()
