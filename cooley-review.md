@@ -31,7 +31,6 @@ I think of this as a proof by contradiction :-)
 	ba=0.1
 	bd=0.626
 	br=0.283
-[(1, t1), (2, t2), (3, t3), (4, t4), (5, t5), (6, t6), (7, t7), (8, t8), (9, t9), (10, t10), (11, t11)]
 
 ##  Solution leading to terminal node t1
 
