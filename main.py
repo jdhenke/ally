@@ -235,7 +235,6 @@ I think of this as a proof by contradiction :-)
     # pprint(root.solutions)
     leaves = [(int(leaf.name[1:]), leaf) for leaf in list(root.solutions.keys())]
     leaves.sort()
-    print leaves
     for name, leaf in leaves:
         solutions = root.solutions[leaf]
         solved = False
