@@ -12,22 +12,21 @@
 	pr2=0.483
 	k=0.15
 
-	 ba=0.1
-	 bd=0.626
-	 br=0.283
+	ba=0.1
+	bd=0.626
+	br=0.283
 
 ##  Leaf t8 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=0.0
 	xj=0.0
 	yi=0.0518
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -72,50 +71,47 @@
 		a: ?None?  = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: ?None?  = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.42032 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t8:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: 1.009 xi + yi >= 0.0518
-
-_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
-
-_C4: 0.909 xi + yi >= 0.0318
-
-_C5: - 0.909 xi - yi >= -0.3318
-
-_C6: xj <= 0
-
-_C7: xi + yi >= -0.15
-
-_C8: - xi - yi >= -0.15
-
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-yi free Continuous
-
-```
+	LP Leading to t8:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: 1.009 xi + yi >= 0.0518
+	
+	_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
+	
+	_C4: 0.909 xi + yi >= 0.0318
+	
+	_C5: - 0.909 xi - yi >= -0.3318
+	
+	_C6: xj <= 0
+	
+	_C7: xi + yi >= -0.15
+	
+	_C8: - xi - yi >= -0.15
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	yi free Continuous
+	
 
 ##  Leaf t9 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=-1.9978022
 	xj=0.0
 	yi=0.0
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -160,50 +156,47 @@ yi free Continuous
 		a: ?None?  = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: ?None?  = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.40234 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t9:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: - 1.009 xi - yi >= -0.0518
-
-_C3: 0 xi + 0 xj >= 0
-
-_C4: - 0.909 xi - yi >= -0.0318
-
-_C5: 0 xi >= 0
-
-_C6: 0.1 xi + 0.517 xj <= 0.0485171102662
-
-_C7: 0.091 xi >= -0.1818
-
-_C8: - 0.091 xi >= 0.1818
-
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-yi free Continuous
-
-```
+	LP Leading to t9:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: - 1.009 xi - yi >= -0.0518
+	
+	_C3: 0 xi + 0 xj >= 0
+	
+	_C4: - 0.909 xi - yi >= -0.0318
+	
+	_C5: 0 xi >= 0
+	
+	_C6: 0.1 xi + 0.517 xj <= 0.0485171102662
+	
+	_C7: 0.091 xi >= -0.1818
+	
+	_C8: - 0.091 xi >= 0.1818
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	yi free Continuous
+	
 
 ##  Leaf t6 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=0.2
 	xj=0.0
 	yi=-0.15
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -248,51 +241,48 @@ yi free Continuous
 		a: ?None?  = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: ?None?  = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.42212 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t6:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: 1.009 xi + yi >= 0.0518
-
-_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
-
-_C4: - 0.909 xi - yi >= -0.0318
-
-_C5: 0 xi >= 0
-
-_C6: xj >= 0
-
-_C7: xi + yi >= -0.15
-
-_C8: - xi - xj - yi >= -0.15
-
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-yi free Continuous
-
-```
+	LP Leading to t6:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: 1.009 xi + yi >= 0.0518
+	
+	_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
+	
+	_C4: - 0.909 xi - yi >= -0.0318
+	
+	_C5: 0 xi >= 0
+	
+	_C6: xj >= 0
+	
+	_C7: xi + yi >= -0.15
+	
+	_C8: - xi - xj - yi >= -0.15
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	yi free Continuous
+	
 
 ##  Leaf t7 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=-1.6844286
 	xj=0.0
 	xk=-0.66145264
 	yi=0.0
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -337,51 +327,48 @@ yi free Continuous
 		a: -0.11696 = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: 0.56692 = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.40516 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t7:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: - 1.009 xi - yi >= -0.0518
-
-_C3: 0 xi + 0 xj >= 0
-
-_C4: - 0.909 xi + 0.426 xk - yi >= -0.0575289879931
-
-_C5: 0 xi >= 0
-
-_C6: 0.2 xi + 0.517 xj - 0.574 xk >= 0.042788122273
-
-_C7: - 0.009 xi >= -0.2018
-
-_C8: - 0.091 xi - 0.517 xj >= 0.153282889734
-
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-xk free Continuous
-yi free Continuous
-
-```
+	LP Leading to t7:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: - 1.009 xi - yi >= -0.0518
+	
+	_C3: 0 xi + 0 xj >= 0
+	
+	_C4: - 0.909 xi + 0.426 xk - yi >= -0.0575289879931
+	
+	_C5: 0 xi >= 0
+	
+	_C6: 0.2 xi + 0.517 xj - 0.574 xk >= 0.042788122273
+	
+	_C7: - 0.009 xi >= -0.2018
+	
+	_C8: - 0.091 xi - 0.517 xj >= 0.153282889734
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	xk free Continuous
+	yi free Continuous
+	
 
 ##  Leaf t4 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=-1.9978022
 	xj=-0.059041408
 	yi=2.1478022
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -426,51 +413,48 @@ yi free Continuous
 		a: -0.08562 = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: 0.53840 = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.40234 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t4:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: 1.009 xi + yi >= 0.0518
-
-_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
-
-_C4: 0.909 xi + yi >= 0.0318
-
-_C5: 0.909 xi + yi >= 0.3318
-
-_C6: xj <= 0
-
-_C7: 0.091 xi >= -0.1818
-
-_C8: - 0.091 xi >= 0.1818
-
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-yi free Continuous
-
-```
+	LP Leading to t4:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: 1.009 xi + yi >= 0.0518
+	
+	_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
+	
+	_C4: 0.909 xi + yi >= 0.0318
+	
+	_C5: 0.909 xi + yi >= 0.3318
+	
+	_C6: xj <= 0
+	
+	_C7: 0.091 xi >= -0.1818
+	
+	_C8: - 0.091 xi >= 0.1818
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	yi free Continuous
+	
 
 ##  Leaf t5 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=6.1868889
 	xj=-11.015733
 	xk=-18.103336
 	yi=0.0
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -515,51 +499,48 @@ yi free Continuous
 		a: -10.91573 = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: 11.29485 = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.47600 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t5:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: 1.009 xi + yi >= 0.0518
-
-_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
-
-_C4: 0.909 xi - 0.426 xk + yi >= 0.0575289879931
-
-_C5: 1.009 xi + yi >= 0.205682
-
-_C6: - 0.1 xi - xj + 0.574 xk >= 0.00572898799314
-
-_C7: 0.091 xi - 0.574 xk >= -0.207528987993
-
-_C8: 0.009 xi >= 0.055682
-
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-xk free Continuous
-yi free Continuous
-
-```
+	LP Leading to t5:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: 1.009 xi + yi >= 0.0518
+	
+	_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
+	
+	_C4: 0.909 xi - 0.426 xk + yi >= 0.0575289879931
+	
+	_C5: 1.009 xi + yi >= 0.205682
+	
+	_C6: - 0.1 xi - xj + 0.574 xk >= 0.00572898799314
+	
+	_C7: 0.091 xi - 0.574 xk >= -0.207528987993
+	
+	_C8: 0.009 xi >= 0.055682
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	xk free Continuous
+	yi free Continuous
+	
 
 ##  Leaf t2 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=-1.9978022
 	xj=0.0
 	yi=1.8478022
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -604,48 +585,45 @@ yi free Continuous
 		a: -10.09726 = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: 10.55004 = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.40234 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t2:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: - 1.009 xi - yi >= -0.0518
-
-_C3: 0 xi + 0 xj >= 0
-
-_C4: 0.909 xi + yi >= 0.0318
-
-_C5: - 0.909 xi - yi >= -0.3318
-
-_C6: 0.1 xi + 0.517 xj <= 0.0485171102662
-
-_C7: xi + yi <= -0.15
-
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-yi free Continuous
-
-```
+	LP Leading to t2:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: - 1.009 xi - yi >= -0.0518
+	
+	_C3: 0 xi + 0 xj >= 0
+	
+	_C4: 0.909 xi + yi >= 0.0318
+	
+	_C5: - 0.909 xi - yi >= -0.3318
+	
+	_C6: 0.1 xi + 0.517 xj <= 0.0485171102662
+	
+	_C7: xi + yi <= -0.15
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	yi free Continuous
+	
 
 ##  Leaf t3 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=22.422222
 	xj=-4.2431436
 	yi=-18.029079
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -690,50 +668,47 @@ yi free Continuous
 		a: -12.53927 = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: 12.77227 = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.62212 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t3:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: 1.009 xi + yi >= 0.0518
-
-_C3: 0.909 xi + 0.483 xj + yi >= 0.303282889734
-
-_C4: 0.909 xi + yi >= 0.0318
-
-_C5: 0.909 xi + yi >= 0.3318
-
-_C6: 0.1 xi + 0.517 xj >= 0.0485171102662
-
-_C7: - 0.009 xi >= -0.2018
-
-_C8: - 0.091 xi - 0.517 xj >= 0.153282889734
-
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-yi free Continuous
-
-```
+	LP Leading to t3:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: 1.009 xi + yi >= 0.0518
+	
+	_C3: 0.909 xi + 0.483 xj + yi >= 0.303282889734
+	
+	_C4: 0.909 xi + yi >= 0.0318
+	
+	_C5: 0.909 xi + yi >= 0.3318
+	
+	_C6: 0.1 xi + 0.517 xj >= 0.0485171102662
+	
+	_C7: - 0.009 xi >= -0.2018
+	
+	_C8: - 0.091 xi - 0.517 xj >= 0.153282889734
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	yi free Continuous
+	
 
 ##  Leaf t1 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=0.0
 	xj=-0.059041408
 	yi=0.3318
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -778,51 +753,48 @@ yi free Continuous
 		a: -10.29704 = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: 10.73184 = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.42032 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t1:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: 1.009 xi + yi >= 0.0518
-
-_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
-
-_C4: 0.909 xi + yi >= 0.0318
-
-_C5: - 0.909 xi - yi >= -0.3318
-
-_C6: xj <= 0
-
-_C7: xi + yi >= -0.15
-
-_C8: - xi - yi <= -0.15
-
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-yi free Continuous
-
-```
+	LP Leading to t1:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: 1.009 xi + yi >= 0.0518
+	
+	_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
+	
+	_C4: 0.909 xi + yi >= 0.0318
+	
+	_C5: - 0.909 xi - yi >= -0.3318
+	
+	_C6: xj <= 0
+	
+	_C7: xi + yi >= -0.15
+	
+	_C8: - xi - yi <= -0.15
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	yi free Continuous
+	
 
 ##  Leaf t10 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=0.051337958
 	xj=-0.025499521
 	xk=-0.025499521
 	yi=0.0
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -867,52 +839,49 @@ yi free Continuous
 		a: 0.07450 = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: 0.35984 = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.42078 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t10:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: 1.009 xi + yi >= 0.0518
-
-_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
-
-_C4: 0.909 xi - 0.426 xk + yi >= 0.0575289879931
-
-_C5: - 1.009 xi - yi >= -0.205682
-
-_C6: - xj + xk >= 0
-
-_C7: xi - xk + yi >= -0.15
-
-_C8: - xi - yi >= -0.15
-
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-xk free Continuous
-yi free Continuous
-
-```
+	LP Leading to t10:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: 1.009 xi + yi >= 0.0518
+	
+	_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
+	
+	_C4: 0.909 xi - 0.426 xk + yi >= 0.0575289879931
+	
+	_C5: - 1.009 xi - yi >= -0.205682
+	
+	_C6: - xj + xk >= 0
+	
+	_C7: xi - xk + yi >= -0.15
+	
+	_C8: - xi - yi >= -0.15
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	xk free Continuous
+	yi free Continuous
+	
 
 ##  Leaf t11 solved it
 
 ### Here are the values of the endogenous variables
-```
+
 	ignore=1.0
 	xi=6.1868889
 	xj=0.0
 	xk=1.342397
 	yi=-6.1907709
-```
 
 ### Here are the utilities of each actor at each terminal node
-```
+
 	 t1
 		a: 0.10000 = 0.1
 		r: 0.13300 = 0.133
@@ -957,35 +926,134 @@ yi free Continuous
 		a: 0.24612 = -0.1*xi + 0.574*xk + 0.0942710120069
 		r: 0.13300 = 0.091*xi - 0.574*xk + 0.340528987993
 		d: 0.47600 = 0.009*xi + 0.420318
-```
 
 ### Here is information about the linear program that was formulated
-```
-LP Leading to t11:
-MAXIMIZE
-1*ignore + 0
-SUBJECT TO
-_C1: ignore = 1
 
-_C2: 1.009 xi + yi >= 0.0518
+	LP Leading to t11:
+	MAXIMIZE
+	1*ignore + 0
+	SUBJECT TO
+	_C1: ignore = 1
+	
+	_C2: 1.009 xi + yi >= 0.0518
+	
+	_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
+	
+	_C4: - 0.909 xi + 0.426 xk - yi >= -0.0575289879931
+	
+	_C5: 0 xi >= 0
+	
+	_C6: - 0.1 xi - xj + 0.574 xk >= 0.00572898799314
+	
+	_C7: 0.091 xi - 0.574 xk >= -0.207528987993
+	
+	_C8: 0.009 xi >= 0.055682
+	
+	VARIABLES
+	ignore free Continuous
+	xi free Continuous
+	xj free Continuous
+	xk free Continuous
+	yi free Continuous
+	
+```python
 
-_C3: - 0.909 xi - 0.483 xj - yi >= -0.303282889734
+    pd1 = .626
+    pr1 = .283
+    pa = .1
+    pd2 = .426
+    pr2 = .483
+    k = .15
+    
+    ba=pa
+    bd=pd1
+    br=pr1
 
-_C4: - 0.909 xi + 0.426 xk - yi >= -0.0575289879931
+    xi = LpVariable("xi")
+    xj = LpVariable("xj")
+    xk = LpVariable("xk")
+    yi = LpVariable("yi")
 
-_C5: 0 xi >= 0
+    t6 = TerminalNode("t6", {
+        "d": bd - xi - xj - yi,
+        "r": br + xi + yi,
+        "a": ba + xj,
+    })
 
-_C6: - 0.1 xi - xj + 0.574 xk >= 0.00572898799314
+    t7 = TerminalNode("t7", {
+        "d": (bd-xi-xj)+(pd2+pa)*(br+xi)*(pd2/(pd2+pa))-pr2*(bd-xi-xj)-k*(pd2/(pd2+pa)),
+        "r": (br+xi)+pr2*(bd-xi+ba)-(pd2+pa)*(br+xi)-k,
+        "a": (ba+xj)+(pd2+pa)*(br+xi)*(pa/(pd2+pa))-pr2*(ba+xj)-k*(pa/(pd2+pa)),
+    })
 
-_C7: 0.091 xi - 0.574 xk >= -0.207528987993
+    r1 = FolderNode((t6, t7), lambda x: x.utilities["r"])
 
-_C8: 0.009 xi >= 0.055682
+    t3 = TerminalNode("t3", {
+        "d": (bd-xi-xj)+(pd2+pa)*(br+xi)*(pd2/(pd2+pa))-pr2*(bd-xi-xj)-k*(pd2/(pd2+pa)),
+        "r": (br+xi)+pr2*(bd-xi+ba)-(pd2+pa)*(br+xi)-k,
+        "a": (ba+xj)+(pd2+pa)*(br+xi)*(pa/(pd2+pa))-pr2*(ba+xj)-k*(pa/(pd2+pa)),
+    })
 
-VARIABLES
-ignore free Continuous
-xi free Continuous
-xj free Continuous
-xk free Continuous
-yi free Continuous
+    d1 = FolderNode((r1, t3), lambda x: x.utilities["d"])
+
+    t8 = TerminalNode("t8", {
+        "d": bd-xi-yi,
+        "r": br+xi+yi,
+        "a": ba,
+    })
+
+    t9 = TerminalNode("t9", {
+        "d": (bd-xi)+pd2*(br+xi)-pr2*(bd-xi)-k,
+        "r": (br+xi)+pr2*(bd-xi)-pd2*(br+xi)-k,
+        "a": ba,
+    })
+
+    r2 = FolderNode((t8, t9), lambda x: x.utilities["r"])
+
+    t4 = TerminalNode("t4", {
+        "d": (bd - xi)+pd2*(br+xi)-pr2*(bd-xi)-k,
+        "r": (br+xi)+pr2*(bd-xi)-pd2*(br+xi)-k,
+        "a": ba,
+    })
+
+    d2 = FolderNode((r2, t4), lambda x: x.utilities["d"])
+
+    t10 = TerminalNode("t10", {
+        "d": bd - xi-yi,
+        "r": br+xi-xk+yi,
+        "a": ba+xk,
+    })
+
+    t11 = TerminalNode("t11", {
+        "d": (bd-xi)+pd2*(bd+xi+ba)-(pr2+pa)*(bd-xi)-k,
+        "r": (br+xi-xk)+(pr2+pa)*(bd-xi)*(pr2/(pr2+pa))-pd2*(br+xi-xk)-k*(pr2/(pr2+pa)),
+        "a": (ba+xk)+(pr2+pa)*(bd-xi)*(pa/(pr2+pa))-pd2*(ba+xk)-k*(pa/(pr2+pa)),
+    })
+
+    r3 = FolderNode((t10, t11), lambda x: x.utilities["r"])
+
+    t5 = TerminalNode("t5", {
+        "d": (bd-xi)+pd2*(bd+xi+ba)-(pr2+pa)*(bd-xi)-k,
+        "r": (br+xi-xk)+(pr2+pa)*(bd-xi)*(pr2/(pr2+pa))-pd2*(br+xi-xk)-k*(pr2/(pr2+pa)),
+        "a": (ba+xk)+(pr2+pa)*(bd-xi)*(pa/(pr2+pa))-pd2*(ba+xk)-k*(pa/(pr2+pa)),
+    })
+
+    d3 = FolderNode((r3, t5), lambda x: x.utilities["d"])
+
+    a0 = FolderNode((d1,d2,d3), lambda x: x.utilities["a"])
+
+    t2 = TerminalNode("t2", {
+        "d": bd+pd1*br-pr1*bd-k,
+        "r": br+pr1*bd-pd1*br-k,
+        "a": ba,
+    })
+
+    r0 = FolderNode((a0, t2), lambda x: x.utilities["r"])
+
+    t1 = TerminalNode("t1", {
+        "d": bd+pd1*br-pr1*bd-k,
+        "r": br+pr1*bd-pd1*br-k,
+        "a": ba,
+    })
 
 ```
