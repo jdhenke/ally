@@ -51,16 +51,16 @@ def main():
                 continue
             else:
                 prob += ineq
-        '''
+        
         prob += xi <= 1.0
-        prob += xi >= -1.0
+        prob += xi >= -.10
         prob += xj <= 1.0
         prob += xj >= -1.0
         prob += xk <= 1.0
         prob += xk >= -1.0
         prob += yi <= 1.0
         prob += yi >= -1.0
-        '''
+        
 
         prob.writeLP("temp.lp")
         prob.solve()
@@ -119,7 +119,7 @@ def main():
     })
 
     t11 = TerminalNode("t11", {
-        "d": (bd-xi)+pd2*(bd+xi+ba)-(pr2+pa)*(bd-xi)-k,
+        "d": (bd-xi)+pd2*(br+xi+ba)-(pr2+pa)*(bd-xi)-k,
         "r": (br+xi-xk)+(pr2+pa)*(bd-xi)*(pr2/(pr2+pa))-pd2*(br+xi-xk)-k*(pr2/(pr2+pa)),
         "a": (ba+xk)+(pr2+pa)*(bd-xi)*(pa/(pr2+pa))-pd2*(ba+xk)-k*(pa/(pr2+pa)),
     })
@@ -127,7 +127,7 @@ def main():
     r3 = FolderNode((t10, t11), lambda x: x.utilities["r"])
 
     t5 = TerminalNode("t5", {
-        "d": (bd-xi)+pd2*(bd+xi+ba)-(pr2+pa)*(bd-xi)-k,
+        "d": (bd-xi)+pd2*(br+xi+ba)-(pr2+pa)*(bd-xi)-k,
         "r": (br+xi-xk)+(pr2+pa)*(bd-xi)*(pr2/(pr2+pa))-pd2*(br+xi-xk)-k*(pr2/(pr2+pa)),
         "a": (ba+xk)+(pr2+pa)*(bd-xi)*(pa/(pr2+pa))-pd2*(ba+xk)-k*(pa/(pr2+pa)),
     })
