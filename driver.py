@@ -2,6 +2,8 @@ from core import *
 from pulp import *
 from pprint import pprint
 
+'''Runs Cooley's game and prints results in Markdown'''
+
 def main():
 
     print "# Solutions to Cooley's Game"
@@ -36,35 +38,59 @@ def main():
     xj = LpVariable("xj")
     xk = LpVariable("xk")
     yi = LpVariable("yi")
+    yj = LpVariable("yj")
+    yk = LpVariable("yk")
 
     # define this function here so can access endogenous variables
-    def lpsolve(inequalities, root, terminals, winner):
-        prob = LpProblem("LP Leading to %s" % winner,LpMaximize)
-        obj = LpVariable("ignore")
-        # dummy objective function
+    def lpsolve(inequalities, root, winner):
+        prob = LpProblem("LP Leading to %s" % winner, LpMaximize)
+        obj = LpVariable("utility")
         prob += obj
-        prob += obj == 1.0
+        prob += obj == root.util(winner)
         for ineq  in inequalities:
             if ineq is False:
-                return False, None
+                return False, None, None
             elif ineq is True:
                 continue
             else:
                 prob += ineq
         
-        prob += xi <= 1.0
-        prob += xi >= -.10
-        prob += xj <= 1.0
-        prob += xj >= -1.0
-        prob += xk <= 1.0
-        prob += xk >= -1.0
-        prob += yi <= 1.0
-        prob += yi >= -1.0
-        
+        # EXAMPLE CONSTRAINT
+        # prob += xi == 0.1
+        # prob += xj == 0.1
+        # prob += xk == 0.1
 
+        # D's decision
+        prob += xi <= bd # can't offer more than d's worth
+        prob += xi >= -1.0 * br # can't demand more than r's worth
+
+        # D's decision
+        prob += xj <= bd-xi # can't offer more than d's worth
+        prob += xj >= -1.0 * ba # can't demand more than a's worth
+
+        # R's decision
+        prob += xk <= br + xi # can't offer more than r's worth
+        prob += xk >= -1.0 * ba # can't demand more than a's worth
+
+        # D's decision
+        prob += yi <= bd - xi - xj # can't offer more than d's worth
+        prob += -1.0 * yi <= br + xi # can't demand more than r's worth
+
+        # D's decision
+        prob += yi <= bd - xi - xj # can't offer more than d's worth
+        prob += -1.0 * yi <= br + xi # can't demand more than r's worth
+
+        # D's decision
+        prob += yj <= bd - xi - xj # can't offer more than d's worth
+        prob += -1.0 * yj <= br + xi # can't demand more than r's worth
+
+        # D's decision
+        prob += yk <= bd - xi - xj # can't offer more than d's worth
+        prob += -1.0 * yk <= br + xi # can't demand more than r's worth
+        
         prob.writeLP("temp.lp")
         prob.solve()
-        return prob.status in (1, -2), prob
+        return prob.status in (1, -2), prob, pulp.value(obj)
 
     # DEFINE THE GAME TREE
 
@@ -91,8 +117,8 @@ def main():
     d1 = FolderNode((r1, t3), lambda x: x.utilities["d"])
 
     t8 = TerminalNode("t8", {
-        "d": bd-xi-yi,
-        "r": br+xi+yi,
+        "d": bd-xi-yj,
+        "r": br+xi+yj,
         "a": ba,
     })
 
@@ -113,8 +139,8 @@ def main():
     d2 = FolderNode((r2, t4), lambda x: x.utilities["d"])
 
     t10 = TerminalNode("t10", {
-        "d": bd - xi-yi,
-        "r": br+xi-xk+yi,
+        "d": bd - xi-yk,
+        "r": br+xi-xk+yk,
         "a": ba+xk,
     })
 
@@ -156,19 +182,21 @@ def main():
 
     # PROCESS THE GAME TREE
 
-    root = d0
+    root = d0 #d0 is true root
     root.solve()
     leaves = [(int(leaf.name[1:]), leaf) for leaf in list(root.solutions.keys())]
     leaves.sort()
     solvedLeaves = set()
+    utilities = []
     for name, leaf in leaves:
         solutions = root.solutions[leaf]
         solved = False
         for option in solutions:
-            if solved:
-                continue
-            success, solution = lpsolve(option, root, terminals, leaf)
+            success, solution, utility = lpsolve(option, root, leaf)
             if success:
+                utilities.append((utility, leaf, pulp.value(xi), pulp.value(xj), pulp.value(xk), pulp.value(yi), ))
+                if solved:
+                    continue
                 solvedLeaves.add(leaf)
                 solved = True
                 print '\n##  Solution leading to %s' % (leaf, )
@@ -194,6 +222,10 @@ def main():
     solvedLeavesList.sort()
     print "%i leaves had at least 1 solution: `%s`" %\
      (len(solvedLeavesList), solvedLeavesList, )
+
+    print '## Top Utilities %i' % (len(utilities), )
+    utilities.sort(reverse=True)
+    pprint(utilities[:20])
 
 if __name__ == '__main__':
     main()

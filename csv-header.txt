@@ -1,0 +1,5 @@
+for agent to optimize wrt.
+    exogenous variables
+    endogenuos variables
+    utilities
+    which terminal node it ends at
