@@ -1,3 +1,4 @@
+import csv
 from core import *
 from pulp import *
 from pprint import pprint
@@ -225,7 +226,9 @@ def main():
 
     print '## Top Utilities %i' % (len(utilities), )
     utilities.sort(reverse=True)
-    pprint(utilities[:20])
+    utilities = list(set(utilities))
+    utilities.sort(reverse=True)
+    pprint(utilities)
 
 if __name__ == '__main__':
     main()

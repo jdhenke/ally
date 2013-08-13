@@ -1,5 +1,7 @@
 for agent to optimize wrt.
     exogenous variables
     endogenuos variables
-    utilities
+    utilities at every terminal node
     which terminal node it ends at
+    utilites of solution
+    
